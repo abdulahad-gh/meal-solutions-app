@@ -1,9 +1,18 @@
 import React from 'react';
 import { Header, Intro } from './Components';
+import { motion, useScroll, useSpring } from 'framer-motion'
+import './index.css'
 
-const app = () => {
+const App = () => {
+    const { scrollYProgress } = useScroll()
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    })
     return (
         <>
+            <motion.div className="progress-bar" style={{ scaleX }} />
             <Header />
             <Intro />
 
@@ -11,4 +20,4 @@ const app = () => {
     );
 };
 
-export default app;
+export default App;
