@@ -1,7 +1,9 @@
 import React from 'react';
-import { Header, Intro } from './Components';
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { CreateContainer, Home } from './Components';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import './index.css'
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './Components/Shared/Navbar';
 
 const App = () => {
     const { scrollYProgress } = useScroll()
@@ -12,9 +14,18 @@ const App = () => {
     })
     return (
         <>
-            <motion.div className="progress-bar" style={{ scaleX }} />
-            <Header />
-            <Intro />
+            <AnimatePresence exitBeforeEnter>
+
+                <motion.div className="progress-bar" style={{ scaleX }} />
+                <Navbar />
+
+                <main>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='create-container' element={<CreateContainer />} />
+                    </Routes>
+                </main>
+            </AnimatePresence>
 
         </>
     );

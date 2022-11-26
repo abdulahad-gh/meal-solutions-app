@@ -1,10 +1,13 @@
 import React from 'react';
+import { Header, Intro } from './index';
+
+
 
 const Home = () => {
     return (
         <section>
-
-            <h1>This is home page</h1>
+            <Header />
+            <Intro />
 
         </section>
     );
